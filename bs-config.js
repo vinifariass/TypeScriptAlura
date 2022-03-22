@@ -1,0 +1,1 @@
+var proxy = require('http-proxy-midleware');

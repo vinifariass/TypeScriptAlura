@@ -7,15 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "lite-server --baseDir=dist",
     "start": "concurrently \"npm run watch\" \"npm run server\"",
-    "compile": ""
+    "compile": "tsc",
+    "watch": "tsc -w"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^6.0.0",
-    "lite-server": "^2.0.1"
-  },
-  "dependencies": {
-    "typescript": "^4.6.2"
+    "http-proxy-middleware": "^2.0.4",
+    "lite-server": "^2.6.1",
+    "typescript": "^4.2.2"
   }
 }

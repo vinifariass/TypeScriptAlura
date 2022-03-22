@@ -1,8 +1,8 @@
 {
-  "compilerOptions": {
-    "outDir": "dist/js",
-    "target": "ES6",
-    "noEmitOnError": true
-  },
-  "inclue": [ "app/**/*"]
+    "compilerOptions": {
+        "outDir": "dist/js",
+        "target": "ES6",
+        "noEmitOnError": true
+    },
+    "include": ["app/**/*"]
 }
