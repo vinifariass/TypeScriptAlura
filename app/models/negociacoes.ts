@@ -9,8 +9,8 @@ export class Negociacoes {
     this.negociacoes.push(negociacao)
   }
 
-  lista(): Array<Negociacao> {
-    return this.negociacoes;
+  lista(): ReadonlyArray<Negociacao> { //somente leitura
+    return [...this.negociacoes]; //pega cada item dessa lista e colocar dentro dessa nova lista (spread operator)
   }
 }
 
