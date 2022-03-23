@@ -25,11 +25,4 @@ export class NegociacoesView extends View{
     </table>
     `;
   }
-
-  update(model: Negociacoes): void { // renderiza esse template no elemento que eu capturei atraves do construtor para pegar com o querySelector
-    const template = this.template(model)
-    console.log(template);
-
-    this.elemento.innerHTML = this.template(model)
-  }
 }
