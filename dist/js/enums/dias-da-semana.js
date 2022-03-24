@@ -7,4 +7,4 @@ export var DiasDaSemana;
     DiasDaSemana[DiasDaSemana["QUINTA"] = 4] = "QUINTA";
     DiasDaSemana[DiasDaSemana["SEXTA"] = 5] = "SEXTA";
     DiasDaSemana[DiasDaSemana["SABADO"] = 6] = "SABADO";
-})(DiasDaSemana || (DiasDaSemana = {})); // COLOCA O VALOR DA ENUM COMO 0
+})(DiasDaSemana || (DiasDaSemana = {}));

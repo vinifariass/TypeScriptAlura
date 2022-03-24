@@ -13,4 +13,3 @@ export class View {
         this.elemento.innerHTML = template;
     }
 }
-//quando coloca ? o parametro fica opcional se passar false

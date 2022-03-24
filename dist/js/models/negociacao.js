@@ -4,7 +4,6 @@ export class Negociacao {
         this.quantidade = quantidade;
         this.valor = valor;
     }
-    // deixando publico mas ninguem pode alterar
     get volume() {
         return this.quantidade * this.valor;
     }
