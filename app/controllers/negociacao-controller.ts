@@ -3,6 +3,7 @@ import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
+import { logarTempoDeExecucao } from "./decorators/logar-tempo-de-execucao.js";
 
 export class NegociacaoController {
   private inputData: HTMLInputElement;
@@ -20,8 +21,11 @@ export class NegociacaoController {
 
   }
 
+  //decorator é chamado com arroba antes da funcao
+  
+  @logarTempoDeExecucao()
+  
   public adiciona(): void {
-    const t1 = performance.now();
     const negociacao = Negociacao.criaDe(this.inputData.value, 
       this.inputQuantidade.value,
        this.inputValor.value);
@@ -33,8 +37,6 @@ export class NegociacaoController {
     this.negociacoes.adiciona(negociacao)
     this.limparFormulario();
     this.atualizaView();
-    const t2 = performance.now()
-    console.log(`Tempo de execução de método update: ${(t2 - t1/1000)}segundo`); //divide em segundos
   }
 
   private ehDiaUtil(data: Date) {
