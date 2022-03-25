@@ -5,6 +5,7 @@ import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 import { inspect } from "./decorators/inspect.js";
+import { domInjector } from "./decorators/domInjector.js";
 
 export class NegociacaoController {
   @domInjector("#data")
@@ -33,7 +34,7 @@ export class NegociacaoController {
     if (!this.ehDiaUtil(negociacao._data)) {
       this.mensagemView
         .update("Apenas negociações em dias úteis são aceitas")
-      return;
+      return; 
     }
     this.negociacoes.adiciona(negociacao)
     this.limparFormulario();
