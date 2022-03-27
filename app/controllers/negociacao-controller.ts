@@ -6,6 +6,7 @@ import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 import { inspect } from "./decorators/inspect.js";
 import { domInjector } from "./decorators/domInjector.js";
+import { NegociacoesService } from "../src/services/negociacoes-service.js";
 
 export class NegociacaoController {
   @domInjector("#data")
@@ -18,6 +19,7 @@ export class NegociacaoController {
   private negociacoes = new Negociacoes();
   private negociacoesView = new NegociacoesView('#negociacoesView')
   private mensagemView = new MensagemView("#mensagemView")
+  private negociacoesService = new NegociacoesService();
 
   constructor() {
     this.negociacoesView.update(this.negociacoes);
@@ -34,27 +36,38 @@ export class NegociacaoController {
     if (!this.ehDiaUtil(negociacao._data)) {
       this.mensagemView
         .update("Apenas negociações em dias úteis são aceitas")
-      return; 
+      return;
     }
     this.negociacoes.adiciona(negociacao)
     this.limparFormulario();
     this.atualizaView();
   }
 
-  private ehDiaUtil(data: Date) {
-    return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO
+  importaDados(): void {
+    this.negociacoesService.obterNegociacoes()
+      .then(negociacoesDeHoje => {
+        for (let negociacao of negociacoesDeHoje) {
+          this.negociacoes.adiciona(negociacao)
+        }
+        this.negociacoesView.update(this.negociacoes)
+      })
   }
 
+}
+  private ehDiaUtil(data: Date) {
+  return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO
+}
+
   private limparFormulario(): void {
-    this.inputData.value = "";
-    this.inputQuantidade.value = "";
-    this.inputValor.value = "";
-    this.inputData.focus();
-  }
+  this.inputData.value = "";
+  this.inputQuantidade.value = "";
+  this.inputValor.value = "";
+  this.inputData.focus();
+}
 
   private atualizaView() {
 
-    this.negociacoesView.update(this.negociacoes)
-    this.mensagemView.update("Negociacao adicionada com sucesso")
-  }
+  this.negociacoesView.update(this.negociacoes)
+  this.mensagemView.update("Negociacao adicionada com sucesso")
+}
 }
