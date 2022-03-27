@@ -1,11 +1,25 @@
-import { NegociacaoController } from './controllers/negociacao-controller.js';
 import { Negociacao } from './models/negociacao.js';
+import { NegociacaoController } from './controllers/negociacao-controller.js';
 
 const controller = new NegociacaoController();
 const form = document.querySelector(".form")
-form.addEventListener("submit",event=>{
-  event.preventDefault()
-  controller.adiciona();
-})
-const negociacao = new Negociacao(new Date(), 10, 100);
-console.log(negociacao.volume);
+if (form) {
+  form.addEventListener("submit", event => {
+    event.preventDefault()
+    controller.adiciona();
+  })
+  const negociacao = new Negociacao(new Date(), 10, 100);
+
+  console.log(negociacao.volume);
+} else {
+  throw new Error("Não foi possível inicializar a aplicação. Verifique se o form existe.")
+}
+
+const botaoImporta = document.querySelector("#botao-importa")
+if(botaoImporta){
+  botaoImporta.addEventListener("click",()=>{
+    controller.importaDados()
+  })
+}else{
+  throw new Error("Não foi possível importar o botao")
+}
