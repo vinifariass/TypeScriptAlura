@@ -1,10 +1,10 @@
-import { Imprimivel } from '../src/utils/imprimivel.js'
+import { Modelo } from '../src/interfaces/modelo.js'
 
-export class Negociacao implements Imprimivel {
+export class Negociacao implements Modelo<Negociacao> {
     constructor(
         public _data: Date,
         public readonly quantidade: number,
-        public readonly valor: number) { super() }
+        public readonly valor: number) { }
     // deixando publico mas ninguem pode alterar
 
     get volume(): number {
