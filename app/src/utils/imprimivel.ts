@@ -1,3 +1,4 @@
-export class Imprimivel {
+
+export class Imprimivel extends Negociacao {
   paraTexto(): string;
 }
