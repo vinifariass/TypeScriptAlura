@@ -1,6 +1,6 @@
 import { Imprimivel } from '../src/utils/imprimivel.js'
 
-export class Negociacao extends Imprimivel {
+export class Negociacao implements Imprimivel {
     constructor(
         public _data: Date,
         public readonly quantidade: number,
