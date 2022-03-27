@@ -24,10 +24,14 @@ export class Negociacao implements Imprimivel {
         return new Negociacao(date, quantidade, valor);
     }
 
-    public paraTexto():string {
-        return  `
+    public paraTexto(): string {
+        return `
         Datra:${this._data},
         Quantidade: ${this.quantidade},
         Valor?${this.valor}`
+    }
+
+    public ehIgual(negociacao: Negociacao): boolean {
+        return this._data.getDate() === negociacao._data.getDate() && this._data.getMonth() === negociacao._data.getMonth() && this._data.getFullYear() === negociacao._data.getFullYear()
     }
 }
