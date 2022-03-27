@@ -25,6 +25,7 @@ export class NegociacaoController {
     this.negociacoesView.update(this.negociacoes);
   }
 
+  //TODO Código como erro devido ao experimentalDecorators que não está sendo reconhecido
   //decorator é chamado com arroba antes da funcao
   @inspect
   @logarTempoDeExecucao();
